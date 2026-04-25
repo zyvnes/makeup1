@@ -31,10 +31,11 @@ function init(level) {
     tile.classList.add("tile");
 
     if (i !== size * size - 1) {
-      const x = (i % size) * (100 / (size - 1));
-      const y = Math.floor(i / size) * (100 / (size - 1));
+      const x = (i % size) * (100 / size);
+      const y = Math.floor(i / size) * (100 / size);
 
       tile.style.backgroundImage = `url(${image})`;
+      tile.style.backgroundSize = `${size * 100}% ${size * 100}%`;
       tile.style.backgroundPosition = `${x}% ${y}%`;
 
       tile.dataset.index = i;
@@ -95,8 +96,8 @@ function checkWin() {
   let correct = true;
 
   for (let i = 0; i < tiles.length - 1; i++) {
-    const x = (i % size) * (100 / (size - 1));
-    const y = Math.floor(i / size) * (100 / (size - 1));
+    const x = (i % size) * (100 / size);
+    const y = Math.floor(i / size) * (100 / size);
 
     if (tiles[i].style.backgroundPosition !== `${x}% ${y}%`) {
       correct = false;
